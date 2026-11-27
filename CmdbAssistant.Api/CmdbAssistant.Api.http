@@ -1,0 +1,43 @@
+@CmdbAssistant_HostAddress = http://localhost:5072
+
+### Check API health
+GET {{CmdbAssistant_HostAddress}}/healthz
+Accept: application/json
+
+###
+
+### Ask about failure impact
+POST {{CmdbAssistant_HostAddress}}/api/chat
+Content-Type: application/json
+
+{
+	"question": "If orders-db-primary fails, which services are affected?"
+}
+
+### Ask about a complete service stack
+POST {{CmdbAssistant_HostAddress}}/api/chat
+Content-Type: application/json
+
+{
+	"question": "What is the full technology stack beneath Order Fulfillment?"
+}
+
+### Ask about ownership
+POST {{CmdbAssistant_HostAddress}}/api/chat
+Content-Type: application/json
+
+{
+	"question": "How does each business service trace through to its application and owner?"
+}
+
+### View proactive infrastructure insights
+GET {{CmdbAssistant_HostAddress}}/api/insights
+Accept: application/json
+
+### View loaded graph counts
+GET {{CmdbAssistant_HostAddress}}/api/graph/summary
+Accept: application/json
+
+### OpenAPI document in Development
+GET {{CmdbAssistant_HostAddress}}/openapi/v1.json
+Accept: application/json
